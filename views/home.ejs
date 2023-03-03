@@ -1,0 +1,26 @@
+<%- include("partials/header"); -%>
+    <h1>Home</h1>
+    <p><%=startingContent%></p>
+    <%postHistory.forEach(function(post){%>
+        <h1><%=post.title%></h1>
+        <p class="post-body"><%=post.short%></p><a class=<%=post.readMore%> href=<%=post.url%>>Read More</a>
+    <%})%>
+    
+<%- include("partials/footer"); -%>
+
+<!-- também funcionaria o href da anchor tag se fosse <a href="/posts/menor%=post.title%maior">Read More</a> -->
+
+<!-- também funcionaria com script: <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="/home.js"></script> -->
+
+<!-- criando um arquivo home.js dentro da pasta public, porém nesse caso o client receberia o arquivo e veria o código
+    $("p.post-body").each(function(){
+    if($(this).text().length < 100){
+        $(this).next().addClass("invisible");
+    } else{
+        let truncateText = $(this).text();
+        truncateText = truncateText.substring(0,100) + " ... ";
+        $(this).text(truncateText);
+        $(this).next().removeClass("invisible");    
+    }
+}) -->

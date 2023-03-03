@@ -1,0 +1,27 @@
+<%- include("partials/header"); -%>
+    <h1>Compose</h1>
+    <form action="/compose" method="post">
+        <div class="form-group">
+            <label for="newTitleInput">Title</label>
+            <input type="text" class="form-control" autocomplete="off" id="newTitleInput" name="newTitle">
+        </div>
+        <div class="form-group">
+            <label for="newPostInput">Post</label>
+            <textarea type="text" class="form-control" autocomplete="off" id="newPostInput" rows="4" name="newPost"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit" name="publishButton" onClick="return checkEmpty()">Publish</button>
+    </form>
+
+    <script>
+        function checkEmpty() {          
+            const inputEntry = $("#newPostInput");
+            
+            if (inputEntry && inputEntry.val()) {
+                return true;    
+            } else{
+                alert("C'mon, the World wants to hear from you! Write something :-)");
+                return false;
+            }
+        }
+    </script>
+<%- include("partials/footer"); -%>
